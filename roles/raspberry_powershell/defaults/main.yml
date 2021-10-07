@@ -1,0 +1,7 @@
+---
+# defaults file for roles/raspberry_powershell
+
+pwsh_path: /usr/local/powershell
+pwsh_ver: 7.1.4
+pwsh_pkg: powershell-{{ pwsh_ver }}-linux-arm64.tar.gz
+temp_path: /tmp

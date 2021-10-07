@@ -1,0 +1,17 @@
+---
+- name: Setup Raspberries
+  hosts: raspberries
+  become: true
+  vars:
+    - timelord: pi26
+
+#  vars:
+#    pwsh_path: /usr/local/powershell
+#    pwsh_ver: 7.1.4
+#    pwsh_pkg: powershell-{{ pwsh_ver }}-linux-arm64.tar.gz
+#    temp_path: /tmp
+
+  roles:
+    - raspberry_update
+    - raspberry_powershell
+    - { role: "raspberry_ntp", when: (ntp_server) } 

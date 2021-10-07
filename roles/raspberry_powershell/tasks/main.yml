@@ -1,0 +1,32 @@
+---
+# tasks file for roles/raspberry_powershell
+
+- name: Install packages PowerShell
+  ansible.builtin.package:
+    name:
+      - ca-certificates
+      - icu-devtools
+      - libunwind8
+    state: latest
+
+- name: Download PowerShell
+  get_url:
+    url: https://github.com/PowerShell/PowerShell/releases/download/v{{ pwsh_ver }}/{{ pwsh_pkg}}
+    dest: "{{ temp_path }}/{{ pwsh_pkg }}"
+
+- name: Create PowerShell directory
+  file:
+    path: "{{ pwsh_path }}"
+    state: directory
+
+- name: Install PowerShell from archive
+  ansible.builtin.unarchive:
+    src:  "{{ temp_path }}/{{ pwsh_pkg }}"
+    remote_src: true
+    dest: "{{ pwsh_path }}"
+
+- name: Create Symlink PowerShell
+  file:
+    src: "{{ pwsh_path }}/pwsh"
+    dest: /usr/local/bin/pwsh
+    state: link

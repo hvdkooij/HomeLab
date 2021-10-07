@@ -1,0 +1,25 @@
+---
+# tasks file for roles/raspberry_ntp
+
+- name: Install NTP packages
+  ansible.builtin.package:
+    name:
+      - gpsd
+      - gpsd-clients
+      - ntp
+      - ntpdate
+      - pps-tools
+    state: latest
+
+- name: copy NTP config
+  template:
+    src: ntp.j2
+    dest: /etc/ntp.conf
+  notify:
+    - raspberry_ntp_restart
+
+- name: Makes sure NTP is started
+  service:
+    name: ntp
+    state: started
+    enabled: true

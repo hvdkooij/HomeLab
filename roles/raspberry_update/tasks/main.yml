@@ -1,0 +1,38 @@
+---
+# Tasks file for roles/raspberry_update
+
+- name: APT update
+  apt:
+    update_cache: true
+    force_apt_get: true
+    cache_valid_time: 3600
+
+- name: APT upgrade
+  apt:
+    upgrade: dist
+    force_apt_get: true
+
+- name: APT autoclean
+  apt:
+    autoclean: true
+
+- name: APT autoremove
+  apt:
+    autoremove: true
+
+- name: Check for reboot
+  register: reboot_required_file
+  stat:
+    path: /var/run/reboot-required
+    get_md5: false
+
+- name: Reboot
+  reboot:
+    msg: "Reboot initiated by Ansible after update/upgrade."
+    connect_timeout: 5
+    reboot_timeout: 300
+    pre_reboot_delay: 5
+    post_reboot_delay: 30
+    test_command: uptime
+  when: reboot_required_file.stat.exists
+
