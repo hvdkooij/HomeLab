@@ -6,7 +6,7 @@ Tis role will install the requested version of PowerShell on you Raspberry PI's.
 Requirements
 ------------
 
-This role requires internet access to donwload the PowerShell code from internet.
+This role requires internet access to download the PowerShell code from internet.
 
 Role Variables
 --------------
@@ -51,4 +51,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+This is an experimental role created by Hugo van der Kooij <hugo@vanderkooij.org>

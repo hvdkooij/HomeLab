@@ -12,7 +12,7 @@ This role depends on:
 Role Variables
 --------------
 
-This role rewuires no variables.
+This role requires no variables.
 
 Dependencies
 ------------
