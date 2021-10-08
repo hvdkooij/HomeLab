@@ -1,31 +1,41 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Seting up the Raspberry PI as a NTP server
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+A stable internet connection is reuired to run a stable NTP server.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The variable 'timelord can be used to tell which of the NTP server is leading a pack of Raspberry PI NTP servers.
+At this moment not all code is implemented to configure this correctly.
+But it will be usefull in the future if you run multiple units behind 1 IPv4 address.
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+I need to check this!
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
+You use it like this:
+    - hosts: raspberries
       roles:
-         - { role: username.rolename, x: 42 }
+        - { role: "raspberry_ntp", when: (ntp_server) }
+
+This way you add the ntp_server variable to your inventory for each Raspberry PI that needs to be a NTP server.
+If you want to run ist all you Raspberry PI's:
+
+    - hosts: raspberries
+      roles:
+        - raspberry_ntp
+
 
 License
 -------
@@ -35,4 +45,6 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+This script was writen as part of automating my homelab.
+If you feel it is usefull then let me know.
+

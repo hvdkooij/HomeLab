@@ -1,31 +1,47 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Tis role will install the requested version of PowerShell on you Raspberry PI's.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role requires internet access to donwload the PowerShell code from internet.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The following variable are available to tinker with the version you install and where to install it on your Raspebbery PI's.
+
+	pwsh_path	Where to install Powershell
+	pwsh_ver	The version of PowerShell to install
+	temp_path	Where to store temporary files
+
+The following variable is based on the value of pwsh_ver and is something you should most likely not change.
+Make sure you read the code before you try something like that.
+
+	pwsh_pkg	The exact package to download to your Rasberry PI's.
+
+The defaults are:
+    pwsh_path: /usr/local/powershell
+    pwsh_ver: 7.1.4
+    pwsh_pkg: powershell-{{ pwsh_ver }}-linux-arm64.tar.gz
+    temp_path: /tmp
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+No external requirements needed.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Use it like:
 
-    - hosts: servers
+    - hosts: raspberries
       roles:
-         - { role: username.rolename, x: 42 }
+        - raspberry_powershell
 
 License
 -------
