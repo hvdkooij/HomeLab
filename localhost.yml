@@ -1,0 +1,7 @@
+---
+- name: WSL housekeeping
+  hosts: wsl
+  become: true
+
+  roles:
+    - raspberry_update
