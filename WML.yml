@@ -1,0 +1,8 @@
+---
+- name: WSL housekeeping
+  hosts: localhost
+  become: true
+
+  roles:
+    - apt_update
+
