@@ -17,9 +17,10 @@ Not all requirements may apply to all roles.
 
 ## Notes
 
-The NTP servers are intened to be reachable over the internet and hardened accoringly.
-The NTP role has a special feature as I have only 1 IPv4 address. Some server can't handle multiple clients through NAT. So the timelord variable allows you to specify which of the servers has the benefirt of more NTP stratum 1 peers.
-
+The NTP servers are intended to be reachable over the internet and hardened accordingly.
+The NTP role has a special feature as I have only 1 IPv4 address.
+Some server can't handle multiple clients through NAT.
+So the timelord variable allows you to specify which of the servers has the benefit of more NTP stratum 1 peers.
 
 ## Disclaimer
 
