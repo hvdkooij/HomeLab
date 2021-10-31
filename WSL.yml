@@ -1,6 +1,6 @@
 ---
 - name: WSL housekeeping
-  hosts: localhost
+  hosts: wsl
   become: true
 
   roles:
