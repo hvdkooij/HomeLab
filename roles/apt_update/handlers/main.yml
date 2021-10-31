@@ -1,2 +1,4 @@
 ---
-# handlers file for roles/raspberry_update
+# handlers file for roles/apt_update
+
+# At this moment we have no need for a handler

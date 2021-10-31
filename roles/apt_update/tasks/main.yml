@@ -1,5 +1,5 @@
 ---
-# Tasks file for roles/raspberry_update
+# Tasks file for roles/apt_update
 
 - name: APT update
   apt:

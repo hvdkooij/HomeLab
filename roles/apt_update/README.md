@@ -1,7 +1,7 @@
 Role Name
 =========
 
-Update a Raspberry with all packages.
+Update a debian/ubuntu system with all packages.
 
 Requirements
 ------------
@@ -37,3 +37,4 @@ Author Information
 
 This is an experimental role created by Hugo van der Kooij <hugo@vanderkooij.org>
 
+Note: It will NOT do a major upgrade!

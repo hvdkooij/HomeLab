@@ -1,2 +1,4 @@
 ---
-# vars file for roles/raspberry_update
+# vars file for roles/apt_update
+
+# We don't need no stinking variables here.
