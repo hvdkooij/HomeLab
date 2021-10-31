@@ -1,0 +1,8 @@
+---
+- name: HP Notebook housekeeping
+  hosts: hpnotebook
+  become: true
+
+  roles:
+    - apt_update
+
