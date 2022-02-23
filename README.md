@@ -22,6 +22,8 @@ The NTP role has a special feature as I have only 1 IPv4 address.
 Some server can't handle multiple clients through NAT.
 So the timelord variable allows you to specify which of the servers has the benefit of more NTP stratum 1 peers.
 
+I added a playbook do-dist-upgrade.yml to do a distribution upgrade. Feel free to use it or adapt it as needed.
+
 ## Disclaimer
 
 This is an experimental repository created and maintained by Hugo van der Kooij <hugo@vanderkooij.org>

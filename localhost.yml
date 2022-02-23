@@ -1,9 +1,0 @@
----
-- name: WSL housekeeping
-  hosts: localhost
-  become: true
-
-  roles:
-    - raspberry_update
-
-# WSL is not a raspberry pi. But they bot run Ubuntu. So Who cares ;-)

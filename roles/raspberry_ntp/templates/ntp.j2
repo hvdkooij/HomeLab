@@ -14,10 +14,15 @@ filegen peerstats file peerstats type day enable
 filegen clockstats file clockstats type day enable
 
 # Specify one or more NTP servers.
-server ntp.time.nl iburst
-server time.esa.int iburst
-server time.t3kkit.com iburst
-server hnapel.xs4all.nl iburst
+server ntp1.time.nl iburst
+server ntp2.time.nl iburst
+server time1.esa.int iburst
+server ntp.vs1.nl iburst
+server ntp.ripe.net iburst
+server ntp.checkpoint.com iburst
+server ntp2.checkpoint.com iburst
+#server time.t3kkit.com iburst
+#server hnapel.xs4all.nl iburst
 
 {% if timelord is not defined or ansible_hostname == timelord %} 
 server ntp0.nl.uu.net iburst
