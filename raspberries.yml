@@ -3,15 +3,13 @@
   hosts: raspberries
   become: true
   vars:
-    - timelord: pi26
-
-#  vars:
-#    pwsh_path: /usr/local/powershell
-#    pwsh_ver: 7.1.4
-#    pwsh_pkg: powershell-{{ pwsh_ver }}-linux-arm64.tar.gz
-#    temp_path: /tmp
+    timelord: pi26
+    pwsh_path: /usr/local/powershell
+    pwsh_ver: 7.2.1
+    pwsh_pkg: powershell-{{ pwsh_ver }}-linux-arm64.tar.gz
+    temp_path: /tmp
 
   roles:
-    - raspberry_update
+    - apt_update
     - raspberry_powershell
     - { role: "raspberry_ntp", when: (ntp_server) } 
