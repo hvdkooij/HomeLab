@@ -1,0 +1,69 @@
+---
+
+# Based on earlier work by Jeff Geerling
+# Written bij Hugo van der Kooij - 20220223
+
+# Fow now we only do this for raspberries.
+- hosts: raspberries
+  gather_facts: true
+# Nothing like elevanted rights will do for this upgrade task
+  become: true
+  vars:
+# Define the highest legacy version here. Any version higher then the listed one will not get an upgrade!
+    - legacy_version: '21.04'
+
+
+  tasks:
+# Check all hosts and show versions based on the lsb_release command
+    - name: Preflight version
+      command: lsb_release -a
+      register: lsb_release
+      changed_when: false
+
+# And show them all 
+    - debug: var=lsb_release.stdout
+
+# Now start the run for eligable devices. See the notes on the WHEN clause below to see which devices we should run the whole block of commands on.
+    - block:
+
+# Update and upgrade with APT first
+      - name: APT update and upgrade
+        apt: 
+          update_cache: yes
+          upgrade: full
+
+# Instal the upgrade tool if not yet present. Problaby overkill
+      - name: Install update-manager-core if needed
+        apt:
+          name: update-manager-core
+          state: present
+
+# This is where you proplaby want to go for a lunch. Because this is where we do the actual upgrade.
+      - name: Now run the releaese upgrade command
+        command: do-release-upgrade -f DistUpgradeViewNonInteractive
+
+# Now let's do a smart reboot and wait for it.
+      - name: Reboot
+        reboot:
+          msg: "Reboot initiated by Ansible after full distribution upgrade."
+          connect_timeout: 5
+          reboot_timeout: 300
+          pre_reboot_delay: 5
+          post_reboot_delay: 30
+          test_command: uptime
+
+# List all upgraded hosts and show versions based on the lsb_release command
+      - name: Postflight version
+        command: lsb_release -a
+        register: lsb_release
+
+# And show them 
+      - debug: var=lsb_release.stdout
+
+# We only do this for Ubuntu and only if the version is equal or lower then the listed Legacy version
+# (Implicit AND function!)
+      when:
+        - ansible_distribution == 'Ubuntu'
+        - ansible_distribution_version <= legacy_version
+
+# And hopefully you enjoyed your lunch as we are done here.
