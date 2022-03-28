@@ -11,6 +11,13 @@
       - pps-tools
     state: latest
 
+- name: Create ntpdate service
+  template:
+    src: ntpdate.j2
+    dest: /usr/lib/systemd/system/ntpddate.service
+  notify:
+    - raspberry_ntpdate_enabled
+
 - name: copy NTP config
   template:
     src: ntp.j2

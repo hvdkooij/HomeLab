@@ -5,3 +5,8 @@
   service:
     name: ntp
     state: restarted
+
+- name: raspberry_ntpdate_enabled
+  service:
+    name: ntpddate.service
+    enabled: true

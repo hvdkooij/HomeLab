@@ -1,0 +1,24 @@
+---
+# tasks file for raspberry_tools
+
+- name: Install preferrred packages
+  ansible.builtin.package:
+    name:
+      - ansible
+      - git
+      - libraspberrypi-bin
+      - lsof
+      - mc
+      - minicom
+      - openvpn
+      - raspi-config
+      - screen
+      - sl
+      - stress
+      - stress-ng
+      - sysbench
+      - tcpdump
+      - tcptraceroute
+      - tmux
+      - wiringpi
+    state: latest

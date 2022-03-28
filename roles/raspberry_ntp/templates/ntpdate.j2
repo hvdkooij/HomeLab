@@ -1,0 +1,9 @@
+[Unit]
+Description=Network Time Sync at startup
+Requires=network.target
+Before=ntp.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/npdate ntp.time.nl
+RemainAfterExit=yes
