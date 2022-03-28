@@ -8,5 +8,5 @@
 
 - name: raspberry_ntpdate_enabled
   service:
-    name: ntpddate.service
+    name: ntpdate.service
     enabled: true

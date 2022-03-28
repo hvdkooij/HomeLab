@@ -14,7 +14,7 @@
 - name: Create ntpdate service
   template:
     src: ntpdate.j2
-    dest: /usr/lib/systemd/system/ntpddate.service
+    dest: /usr/lib/systemd/system/ntpdate.service
   notify:
     - raspberry_ntpdate_enabled
 
