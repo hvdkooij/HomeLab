@@ -6,12 +6,14 @@
     name:
       - ansible
       - git
+      - jq
       - libraspberrypi-bin
       - lsof
       - mc
       - minicom
       - openvpn
       - raspi-config
+      - rrdtool
       - screen
       - sl
       - stress
