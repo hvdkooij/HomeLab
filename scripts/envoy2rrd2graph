@@ -1,0 +1,74 @@
+#!/bin/bash
+
+#	Use rrdtool to Graphh prodcution of a local Envoy-S-Standard-EU
+#	(C) 2022, Hugo van der Kooij
+#	requires:
+#		Envoy-S in you local network
+#		bash, curl, jq, rrdtool
+
+#	Local variables
+#
+# Where do we store stuff?
+DataDir=$HOME/Envoy
+
+#	Initializing
+
+# Check for existing DataDir
+if [ ! -d $DataDir ]
+then
+	exit 1
+fi
+
+# Check For existing RRD files
+# Live Power output
+if [ ! -f $DataDir/wattsNow.rrd ]
+then
+	exit 2
+fi
+
+# Power output today
+if [ ! -f $DataDir/wattHoursToday.rrd ]
+then
+	exit 3
+fi
+
+# Power output for a week
+if [ ! -f $DataDir/wattHoursSevenDays.rrd ]
+then
+	exit 4
+fi
+
+# Power output Lifetime
+if [ ! -f $DataDir/wattHoursLifetime.rrd ]
+then
+	exit 5
+fi
+
+#	Graphs
+rrdtool graph $DataDir/wattsNow.png \
+	--imgformat PNG \
+	--end now --start end-2d \
+	DEF:wattsNow=$DataDir/wattsNow.rrd:wattsNow:AVERAGE \
+	AREA:wattsNow#0000FF:"Watts output\l"
+
+rrdtool graph $DataDir/wattHoursToday.png \
+	--imgformat PNG \
+	--end now --start end-2d \
+	DEF:wattHours=$DataDir/wattHoursToday.rrd:wattHoursToday:AVERAGE \
+	LINE1:wattHours#0000FF:"Watt Hours per day\l"
+
+rrdtool graph $DataDir/wattHoursSevenDays.png \
+	--imgformat PNG \
+	--end now --start end-2w \
+	DEF:wattHours=$DataDir/wattHoursSevenDays.rrd:wattHoursSevenDays:AVERAGE \
+	LINE1:wattHours#0000FF:"Watt Hours per seven days\l"
+
+rrdtool graph $DataDir/wattHoursLifetime.png \
+	--imgformat PNG \
+	--end now --start end-2y \
+	DEF:wattHours=$DataDir/wattHoursLifetime.rrd:wattHoursLifetime:AVERAGE \
+	LINE1:wattHours#0000FF:"Watt Hours per seven days\l"
+
+#rrdtool update $DataDir/wattHoursLifetime.rrd N:$wattHoursLifetime
+
+# The End

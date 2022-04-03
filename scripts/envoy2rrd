@@ -52,7 +52,7 @@ fi
 if [ ! -f $DataDir/wattHoursSevenDays.rrd ]
 then
 	rrdtool create $DataDir/wattHoursSevenDays.rrd --step 60 \
-		DS:wattsHoursSevenDays:GAUGE:60:0:$MaxWattHoursSevenDays \
+		DS:wattHoursSevenDays:GAUGE:60:0:$MaxWattHoursSevenDays \
 		RRA:AVERAGE:0.5:1m:90d \
 		RRA:AVERAGE:0.5:1h:18M \
 		RRA:AVERAGE:0.5:1d:7y 
@@ -62,7 +62,7 @@ fi
 if [ ! -f $DataDir/wattHoursLifetime.rrd ]
 then
 	rrdtool create $DataDir/wattHoursLifetime.rrd --step 60 \
-		DS:wattsHoursLifetime:COUNTER:60:0:4294967295 \
+		DS:wattHoursLifetime:COUNTER:60:0:4294967295 \
 		RRA:AVERAGE:0.5:1m:90d \
 		RRA:AVERAGE:0.5:1h:18M \
 		RRA:AVERAGE:0.5:1d:7y 
