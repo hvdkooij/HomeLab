@@ -39,7 +39,7 @@
           state: present
 
 # This is where you proplaby want to go for a lunch. Because this is where we do the actual upgrade.
-      - name: Now run the releaese upgrade command
+      - name: Now run the release upgrade command (Did I mention lunchtime?)
         command: do-release-upgrade -f DistUpgradeViewNonInteractive
 
 # Now let's do a smart reboot and wait for it.
