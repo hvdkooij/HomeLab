@@ -10,7 +10,7 @@
   become: true
   vars:
 # Define the highest legacy version here. Any version higher then the listed one will not get an upgrade!
-    - legacy_version: '21.04'
+    - legacy_version: '21.10'
 
 
   tasks:
