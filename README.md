@@ -10,9 +10,10 @@ But I expect to add some other stuff as well as soon as I get remote access to i
 Some of the requirements are listed below.
 Not all requirements may apply to all roles.
 
- - Raspberry PI's are installed with Ubuntu.
+ - Raspberry PI's are installed with Ubuntu or Rasbian. or Rasbian.
  - Hosts run SSH server.
  - Initial setup was completed.
+ - User can login to remote units with SSH without password (pubkey).
  - User can sudo without password.
 
 ## Notes
