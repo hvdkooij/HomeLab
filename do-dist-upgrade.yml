@@ -6,10 +6,12 @@
 # Fow now we only do this for raspberries.
 - hosts: raspberries
   gather_facts: true
-# Nothing like elevanted rights will do for this upgrade task
+# Only elevated rights will do for this upgrade task (sudo or die)
   become: true
   vars:
 # Define the highest legacy version here. Any version higher then the listed one will not get an upgrade!
+# Or to put it differently: Anything up to and including this version will be considered legacy and in need of an upgrade.
+# You will propably want to review this playbok twice a year. But it's up to you how long you will wait after a new version is released.
     - legacy_version: '21.10'
 
 
