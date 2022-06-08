@@ -13,4 +13,4 @@
     - apt_update
     - raspberry_tools
     - raspberry_powershell
-    - { role: "raspberry_ntp", when: (ntp_server == " true") } 
+    - { role: "raspberry_ntp", when: (ntp_server is defined and ntp_server == True) } 
