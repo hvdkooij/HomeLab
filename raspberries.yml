@@ -5,7 +5,7 @@
   vars:
     timelord: pi26
     pwsh_path: /usr/local/powershell
-    pwsh_ver: 7.2.4
+    pwsh_ver: 7.2.7
     pwsh_pkg: powershell-{{ pwsh_ver }}-linux-arm64.tar.gz
     temp_path: /tmp
 
