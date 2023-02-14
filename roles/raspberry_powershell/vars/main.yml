@@ -3,6 +3,6 @@
 
 vars:
   pwsh_path: /usr/local/powershell
-  pwsh_ver: 7.2.2
+  pwsh_ver: 7.3.2
   pwsh_pkg: powershell-{{ pwsh_ver }}-linux-arm64.tar.gz
   temp_path: /tmp

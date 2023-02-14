@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Use Ansible to update all Raspberri PI's
+
+# Variable ....
+APB='/home/hvdk/.local/bin/ansible-playbook'
+
+
+# Go for it
+$APB -i inventory/ raspberries.yml

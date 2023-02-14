@@ -4,7 +4,7 @@
 - name: Install preferrred packages
   ansible.builtin.package:
     name:
-      - ansible
+      - asciinema
       - git
       - jq
       - libraspberrypi-bin
@@ -22,5 +22,12 @@
       - tcpdump
       - tcptraceroute
       - tmux
-      - wiringpi
     state: latest
+
+- name: Install preferrred packages (Ubuntu Only)
+  ansible.builtin.package:
+    name:
+      - ansible
+      - wiringpi
+  when:
+    - ansible_distribution == 'Ubuntu' 

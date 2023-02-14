@@ -11,14 +11,28 @@
   apt:
     upgrade: dist
     force_apt_get: true
+    autoremove: yes
+    autoclean: yes
+  register: aptupgrade
 
-- name: APT autoclean
-  apt:
-    autoclean: true
+#- name: APT autoclean
+#  apt:
+#    autoclean: true
+#  register: aptautoclean
 
-- name: APT autoremove
-  apt:
-    autoremove: true
+#- name: APT autoremove
+#  apt:
+#    autoremove: true
+#  register: aptautoremove
+
+- name: APT record changes
+  shell: grep -E "^$(date +%Y-%m-%d).+ (install|upgrade|remove) " /var/log/dpkg.log |cut -d " " -f 3-5
+  register: aptchanges
+  when: aptupgrade.changed
+
+- name: APT report changes
+  debug: msg="{{ aptchanges.stdout_lines }}"
+  when: aptupgrade.changed
 
 - name: Check for reboot
   register: reboot_required_file
