@@ -3,6 +3,7 @@ pi25 ansible_host=192.168.2.25 ntp_server=true
 pi26 ansible_host=192.168.2.26 ntp_server=true
 pi31 ansible_host=192.168.2.31
 pi400 ansible_host=192.168.2.52 ansible_user=hvdk
+pi401 ansible_host=192.168.2.82 ansible_user=hvdk
 
 [raspberries:vars]
 ansible_user=ubuntu
